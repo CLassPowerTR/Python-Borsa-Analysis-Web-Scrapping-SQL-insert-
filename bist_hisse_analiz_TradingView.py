@@ -13,15 +13,15 @@ from math import ceil
 #🔄❌📊🎉✅
 
 # Supabase Bağlantısı
-SUPABASE_URL = "https://pymftrmpquqhhdqiudel.supabase.co"  # Supabase Dashboard > Settings > Project URL
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5bWZ0cm1wcXVxaGhkcWl1ZGVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgxNjM2MDIsImV4cCI6MjA1MzczOTYwMn0.VZwy2m63h_BMFo2eRq8n9DTJm-PmDs9Gf5OJmHVPglc"  # Supabase Dashboard > Settings > API > anon public
+SUPABASE_URL = "API_URL"  # Supabase Dashboard > Settings > Project URL
+SUPABASE_KEY = "API_KEY"  # Supabase Dashboard > Settings > API > anon public
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # Kimlik Doğrulama
 try:
     user = supabase.auth.sign_in_with_password({
-        "email": "gslibatuhan13@gmail.com",
-        "password": "01012001SonyYamaha."
+        "email": "", # Supabase account email
+        "password": "" # Supabase account password
     })
 except Exception as auth_error:
     print(f"❌ Kimlik doğrulama hatası: {str(auth_error)}")
