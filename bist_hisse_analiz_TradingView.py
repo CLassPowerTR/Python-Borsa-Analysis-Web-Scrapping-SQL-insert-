@@ -34,16 +34,14 @@ def get_existing_hisse_data():
     .execute()
 
     return [item['hisse_adi'] for item in db_response.data]
-    #return db.collection('hisse_fiyatlari').document('veriler_test').get().to_dict() if db.collection('hisse_fiyatlari').document('veriler_test').get().exists else {'hisse_list': []}  # Eğer veri yoksa boş bir liste döner
-
+   
 def get_existing_analiz_data():
     db_response = supabase.table('hisse_analiz') \
     .select('hisse_adi') \
     .execute()
 
     return [item['hisse_adi'] for item in db_response.data]
-    #return db.collection('hisse_fiyatlari').document('veriler_test').get().to_dict() if db.collection('hisse_fiyatlari').document('veriler_test').get().exists else {'hisse_list': []}  # Eğer veri yoksa boş bir liste döner
-
+    
 
 def update_data(liste):
     db.collection('hisse_analizleri').document('veriler').set({'analiz_list': liste}, merge=True)
@@ -121,9 +119,6 @@ def hisse_analizleri_baslat(hisse_adi):
                 elif is_empty(v):
                     result[k] = "-"
 
-            #asyncio.run(upsert_database(result))
-            #threading.Thread(target=upsert_database, args=(result,)).start()
-            #upsert_database(result)
             all_analysis_results.append(result)
 
         except Exception as e:
@@ -157,7 +152,6 @@ async def upsert_database(veriler):
                                 ),
                                 timeout=10
                             )
-                            #print(f"✅{veri['hisse_adi']} güncellendi (Zaman: {veri['update_at']})")
                             break
                     except asyncio.TimeoutError:
                         print(f"❌Zaman aşımı (Deneme {attempt + 1}/{max_retries}): {veri['hisse_adi']}")
