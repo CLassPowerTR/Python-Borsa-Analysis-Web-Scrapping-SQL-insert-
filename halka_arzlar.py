@@ -7,15 +7,15 @@ import asyncio
 from datetime import datetime, timedelta
 
 # Supabase Bağlantısı
-SUPABASE_URL = "https://pymftrmpquqhhdqiudel.supabase.co"  # Supabase Dashboard > Settings > Project URL
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5bWZ0cm1wcXVxaGhkcWl1ZGVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgxNjM2MDIsImV4cCI6MjA1MzczOTYwMn0.VZwy2m63h_BMFo2eRq8n9DTJm-PmDs9Gf5OJmHVPglc"  # Supabase Dashboard > Settings > API > anon public
+SUPABASE_URL = ""  # Supabase Dashboard > Settings > Project URL
+SUPABASE_KEY = ""  # Supabase Dashboard > Settings > API > anon public
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # Kimlik Doğrulama
 try:
     user = supabase.auth.sign_in_with_password({
-        "email": "gslibatuhan13@gmail.com",
-        "password": "01012001SonyYamaha."
+        "email": "",
+        "password": ""
     })
 except Exception as auth_error:
     print(f"❌ Kimlik doğrulama hatası: {str(auth_error)}")
@@ -243,15 +243,3 @@ async def main():
         print('Program Durdu!')             
 # Çalıştır
 asyncio.run(main())
-
-"""
-else:              
-    print("Halka Arz için Zaman bekleniyor",
-    datetime.now(tz=turkey_tz).strftime('%Y-%m-%d'),
-    ' - ', 'Cumartesi' if datetime.now(tz=turkey_tz).weekday() == 5 else 'Pazar' if datetime.now(tz=turkey_tz).weekday() == 6 else '',
-    ' / ',
-    datetime.now(tz=turkey_tz).strftime("%H:%M:%S"),
-
-    )
-    time.sleep(300)  # 5 dakika sonra tekrar kontrol et
-"""
